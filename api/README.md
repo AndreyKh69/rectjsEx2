@@ -13,6 +13,7 @@ create order (post method)->
 http://localhost:8888/order
 
 Post method data (like swagger) for postman -
+```
 {
     "firstName": "John",
     "lastName": "Smith",
@@ -48,6 +49,7 @@ Post method data (like swagger) for postman -
     ],
     "totalAmount": 1448.99
 }
+```
 
 ## By default DB_URL connect to docker mongo server, for change this endpoint just create .env file and add -
 
