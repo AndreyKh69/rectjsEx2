@@ -28,7 +28,7 @@ const orderSchema = new mongoose.Schema({
     require: true,
   },
 
-  products: [{ type: String, ref: Product }],
+  products: [{ type: Object, ref: Product }],
 
   totalAmount: {
     type: Number,

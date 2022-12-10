@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const db = require("./model/index");
 const productController = require("./controllers/product.controller.js");
+const orderController = require("./controllers/order.controller.js");
 
 // ** Settings
 const PORT = process.env.PORT || 8888;
@@ -32,11 +33,17 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Tal & Andrey API v:0.1(Beta)." });
 });
 
+// ** Products endpoint
 // product
 app.get("/products", productController.findAll);
-
 // get product by ID
 app.get("/products/:id", productController.findOne);
+
+// ** Order endpoint
+// get order by ID
+app.get("/order/:id", orderController.findOne);
+// create order
+app.post("/order", orderController.create);
 
 app.get("*", (req, res) => {
   res.json({ message: "Can I help you? @_@" });
