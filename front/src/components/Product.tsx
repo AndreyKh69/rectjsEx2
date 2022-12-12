@@ -1,6 +1,7 @@
 export default interface Product {
-    name: string;
-    price: number;
-    description: string;
-    img: string;
+  id: string;
+  name: string;
+  price: number;
+  desc: string;
+  images: string[];
 }

@@ -1,21 +1,23 @@
 import Product from "../../components/Product";
 
 export default interface DBProduct {
-    name: string;
-    desc: string;
-    price: number;
-    images: string[];
+  id: string;
+  name: string;
+  price: number;
+  desc: string;
+  images: string[];
 }
 
 function convertProducts(dbProducts: DBProduct[]) {
-    const products: Product[] = dbProducts.map(product => ({
-        name: product.name,
-        price: product.price,
-        description: product.desc,
-        img: product.images[0]
-    }));
+  const products: Product[] = dbProducts.map((product) => ({
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    desc: product.desc,
+    images: product.images,
+  }));
 
-    return products;
+  return products;
 }
 
 export { convertProducts };

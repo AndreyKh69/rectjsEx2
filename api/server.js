@@ -11,8 +11,14 @@ const DB_URL =
   "mongodb://admin:admin@localhost:27017/colmanEx2?authSource=admin";
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+  origin: "*",
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // get MongoDB driver connection
 db.mongoose

@@ -3,20 +3,19 @@ const Order = require("../model/order.model");
 // Create and Save a new Product
 exports.create = (req, res) => {
   // code hare
-  console.log(req.body);
+  // console.log(req.body);
 
   const orderData = req.body; // next version will be added input validation
 
   const newOrder = new Order(orderData);
 
-  newOrder
-    .save()
-    .then((data) => {
-      res.status(200).send({ orderId: data.id });
-    })
-    .catch((err) => {
-      res.status(500).send({ message: err });
-    });
+  newOrder.save();
+  // .then((data) => {
+  res.status(200).json({ orderId: newOrder.id });
+  // })
+  // .catch((err) => {
+  //   return res.status(500).send({ message: err });
+  // });
 };
 
 // Retrieve all Orders from the database. (just for testing)
