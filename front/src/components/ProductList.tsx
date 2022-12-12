@@ -1,4 +1,4 @@
-import PCard from "./PCard";
+import ShopCard from "./ShopCard";
 import Product from "./Product";
 
 import './ProductList.css';
@@ -14,11 +14,11 @@ export default function ProductList(props: ProductListProps) {
     return (
         <div className="products">
             {props.products.map((product, idx) =>
-                <PCard
+                <ShopCard
                     key={idx}
                     id={idx}
                     product={product}
-                    checked={props.checkedProducts[idx]}
+                    isChecked={props.checkedProducts[idx]}
                     onClick={props.onClickProduct} />
             )}
         </div>

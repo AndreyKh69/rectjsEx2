@@ -35,19 +35,27 @@ function App() {
 	const router = createBrowserRouter([
 		{
 			path: "/",
-			element: <Shop products={products} checkedProducts={checkedProducts} onClickProduct={handleCheckProduct} />,
+			element: <NavDisplay children={<Shop products={products} checkedProducts={checkedProducts} onClickProduct={handleCheckProduct} />}/>,
 		},
 		{
 			path: "/Order",
-			element: <Order products={products} chosenProducts={checkedProducts} />,
+			element: <NavDisplay children={<Order products={products} chosenProducts={checkedProducts} />}/>,
 		},
 	]);
+
+	function NavDisplay(props: {children: JSX.Element}) {
+		return (
+			<div>
+				<Navbar numberOfProducts={numberOfProductsInCart} />
+				{props.children}
+			</div>
+		)
+	}
+
 
 
 	return (
 		<div className="App">
-			<Navbar numberOfProducts={numberOfProductsInCart} />
-			{/* <PCard name={'blabla'} price={3} description={'bobob'} img={''}/> */}
 			<RouterProvider router={router} />
 		</div>
 	);

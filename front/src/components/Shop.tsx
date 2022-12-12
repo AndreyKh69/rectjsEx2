@@ -6,10 +6,10 @@ export default function Shop(props: ProductListProps) {
     return (
         <div>
             <p>Shop</p>
-            <ProductList 
-            products={props.products} 
-            checkedProducts={props.checkedProducts} 
-            onClickProduct={props.onClickProduct} />
+            <ProductList
+                products={props.products}
+                checkedProducts={props.checkedProducts}
+                onClickProduct={props.onClickProduct} />
         </div>
     )
 }
