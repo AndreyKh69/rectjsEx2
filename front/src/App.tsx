@@ -9,6 +9,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Navbar from "./components/StoreNavbar";
 import Order from './components/Order';
+import SuccessfullOrder from './components/SuccessfullOrder';
 
 function App() {
 	const [products, setProducts] = useState<Product[]>([]);
@@ -40,6 +41,10 @@ function App() {
 		{
 			path: "/Order",
 			element: <NavDisplay children={<Order products={products} chosenProducts={checkedProducts} />}/>,
+		},
+		{
+			path: "/Order/:id",
+			element: <NavDisplay children={<SuccessfullOrder/>}/>,
 		},
 	]);
 

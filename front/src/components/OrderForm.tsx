@@ -20,12 +20,14 @@ export default function OrderForm(props: any) {
     const submitHandler = (event: any) => {
         event.preventDefault();
 
-        const orderData = {
-            name: name,
-            id: id,
-        };
         setAmount(prev => prev + 1);
         let orderNum = amount + (id || 0);
+        
+        const orderData = {
+            name: name,
+            id: orderNum,
+            userId: id
+        };
 
         fetch(
             Api.url + `/order/${amount + (id || 0)}`, {
@@ -36,7 +38,8 @@ export default function OrderForm(props: any) {
             },
             body: JSON.stringify(orderData)
         }
-        ).then((r) => navigate("/order/3")).catch((err) => console.log(err));
+        ).then((r) => navigate('/order/' + orderNum)).catch((err) => {console.log(err) 
+            navigate('/order/' + orderNum)});
     };
 
     return (
@@ -54,7 +57,7 @@ export default function OrderForm(props: any) {
                 <Form.Control value={id} type="number" placeholder="Enter id" onChange={(e) => idChangeHandeler(e)} />
             </Form.Group>
 
-            <Button onSubmit={submitHandler} variant="primary" type="submit">
+            <Button onClick={(e) =>submitHandler(e)} variant="primary">
                 Submit
             </Button>
         </Form>
